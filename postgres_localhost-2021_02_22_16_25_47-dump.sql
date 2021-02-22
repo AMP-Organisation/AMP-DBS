@@ -143,27 +143,23 @@ ALTER TABLE ONLY public.users ALTER COLUMN fk_group SET DEFAULT nextval('public.
 -- Data for Name: group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."group" (id, "Type") FROM stdin;
-1	client
-2	medecin
-3	admin
-\.
+INSERT INTO public."group" (id, "Type") VALUES (1, 'client');
+INSERT INTO public."group" (id, "Type") VALUES (2, 'doctor');
+INSERT INTO public."group" (id, "Type") VALUES (3, 'admin');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group) FROM stdin;
-1	sens	nathan	2019607838@lacatholille.fr	unknow	22	1998-03-14 00:00:00.014	2021-02-22 14:52:35.751697	\N	3
-\.
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group) VALUES (3, 'sens', 'nathan', '2019607838@lacatholille.fr', 'unknow', 22, '1998-03-14 16:24:08', '2021-02-22 15:24:40.434136', NULL, 3);
 
 
 --
 -- Name: group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.group_id_seq', 3, true);
+SELECT pg_catalog.setval('public.group_id_seq', 6, true);
 
 
 --
@@ -177,7 +173,7 @@ SELECT pg_catalog.setval('public.users_fk_group_seq', 1, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
 
 
 --
