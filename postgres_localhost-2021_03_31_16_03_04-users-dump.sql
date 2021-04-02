@@ -68,7 +68,8 @@ CREATE TABLE public.users (
     birth_date timestamp without time zone NOT NULL,
     dt_inscription timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     last_login timestamp without time zone,
-    fk_group integer NOT NULL
+    fk_group integer NOT NULL,
+    password character varying(100)
 );
 
 
@@ -143,8 +144,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN fk_group SET DEFAULT nextval('public.
 -- Data for Name: group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."group" (id, "Type") VALUES (1, 'client');
 INSERT INTO public."group" (id, "Type") VALUES (2, 'doctor');
+INSERT INTO public."group" (id, "Type") VALUES (1, 'client');
 INSERT INTO public."group" (id, "Type") VALUES (3, 'admin');
 
 
@@ -152,7 +153,9 @@ INSERT INTO public."group" (id, "Type") VALUES (3, 'admin');
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group) VALUES (3, 'sens', 'nathan', '2019607838@lacatholille.fr', 'unknow', 22, '1998-03-14 16:24:08', '2021-02-22 15:24:40.434136', NULL, 3);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (9, 'sens', 'cloe', 'sens.cloe@gmail.com', 'blondy', 15, '2006-09-21 16:24:08', '2021-03-01 09:24:51.101809', NULL, 1, NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (1, 'sens', 'nathan', '2019607838@lacatholille.fr', 'unknow', 22, '1998-03-14 16:24:08', '2021-03-31 11:32:47.817933', NULL, 3, '$pbkdf2-sha256$30000$nfM.R0jp3RtjLKUUopTSmg$rIYzBBxtR7PwR2MI2U4wiQIDVHDOYD0Bxf.XWCR4J0c');
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (15, 'Bretrand-Rapello', 'Baptiste', 'baptiste@lacatholille.fr', 'elbaptiste', 25, '1998-03-14 16:24:08', '2021-03-31 13:34:16.939812', NULL, 1, '$pbkdf2-sha256$30000$qnUOYewdo7SW0jqH0Jpzrg$OzhXGnLpQIaET.yxKVKyckmejGnsdughaivVGxnL./w');
 
 
 --
@@ -166,14 +169,14 @@ SELECT pg_catalog.setval('public.group_id_seq', 6, true);
 -- Name: users_fk_group_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_fk_group_seq', 1, true);
+SELECT pg_catalog.setval('public.users_fk_group_seq', 2, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+SELECT pg_catalog.setval('public.users_id_seq', 15, true);
 
 
 --
@@ -196,6 +199,13 @@ CREATE UNIQUE INDEX group_id_uindex ON public."group" USING btree (id);
 --
 
 CREATE UNIQUE INDEX users_id_uindex ON public.users USING btree (id);
+
+
+--
+-- Name: users_password_uindex; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX users_password_uindex ON public.users USING btree (password);
 
 
 --
