@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.2
--- Dumped by pg_dump version 13.2
+-- Dumped from database version 12.5
+-- Dumped by pg_dump version 12.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -33,7 +33,9 @@ CREATE TABLE public.medicine (
     list_symptoms integer[],
     active_principle integer[],
     list_excipients integer[],
-    name character varying(50) NOT NULL
+    name character varying(50) NOT NULL,
+    description text,
+    thumbnail_id integer
 );
 
 
@@ -100,15 +102,19 @@ ALTER TABLE ONLY public.medicine ALTER COLUMN id SET DEFAULT nextval('public.med
 -- Data for Name: medicine; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name) VALUES (1, '{1,2,3}', 1000, 4000, 2, '{1,4}', '{1}', NULL, 'doliprane');
-INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name) VALUES (2, '{1}', 80, 1000, 1, '{2}', '{2}', '{5}', 'spasfon');
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (10, '{1}', 42, 420, 2, NULL, NULL, NULL, 'new medoc', 'une description pour le medicamdent', NULL);
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (11, '{1}', 42, 420, 2, NULL, NULL, NULL, 'foo bar ', 'un medoc de dev', NULL);
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (12, '{1}', 42, 420, 1, NULL, NULL, NULL, 'toto', 'un medoc qui ne sert a rien a part avoir 0', NULL);
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (1, '{1,2,3}', 1000, 4000, 2, '{1,4}', '{1}', NULL, 'doliprane', 'Un médicament contenant du paracétamol. Courrament utilisé pour la fièvre', 1);
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (2, '{1}', 80, 1000, 1, '{2}', '{2}', '{5}', 'spasfon', 'Un médicament utilisé couramment pour les maux de ventres', 2);
+INSERT INTO public.medicine (id, list_type, dose, dose_max, delay, list_symptoms, active_principle, list_excipients, name, description, thumbnail_id) VALUES (9, '{1}', 42, 420, 0, NULL, NULL, NULL, 'medoc 3', 'une description pour le medicamdent', 3);
 
 
 --
 -- Name: medicine_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.medicine_id_seq', 2, true);
+SELECT pg_catalog.setval('public.medicine_id_seq', 12, true);
 
 
 --
