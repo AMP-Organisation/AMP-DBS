@@ -69,7 +69,8 @@ CREATE TABLE public.users (
     dt_inscription timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     last_login timestamp without time zone,
     fk_group integer NOT NULL,
-    password character varying(100)
+    password character varying(100),
+    height double precision
 );
 
 
@@ -153,9 +154,12 @@ INSERT INTO public."group" (id, "Type") VALUES (3, 'admin');
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (9, 'sens', 'cloe', 'sens.cloe@gmail.com', 'blondy', 15, '2006-09-21 16:24:08', '2021-03-01 09:24:51.101809', NULL, 1, NULL);
-INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (1, 'sens', 'nathan', '2019607838@lacatholille.fr', 'unknow', 22, '1998-03-14 16:24:08', '2021-03-31 11:32:47.817933', NULL, 3, '$pbkdf2-sha256$30000$nfM.R0jp3RtjLKUUopTSmg$rIYzBBxtR7PwR2MI2U4wiQIDVHDOYD0Bxf.XWCR4J0c');
-INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password) VALUES (15, 'Bretrand-Rapello', 'Baptiste', 'baptiste@lacatholille.fr', 'elbaptiste', 25, '1998-03-14 16:24:08', '2021-03-31 13:34:16.939812', NULL, 1, '$pbkdf2-sha256$30000$qnUOYewdo7SW0jqH0Jpzrg$OzhXGnLpQIaET.yxKVKyckmejGnsdughaivVGxnL./w');
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (9, 'sens', 'cloe', 'sens.cloe@gmail.com', 'blondy', 15, '2006-09-21 16:24:08', '2021-03-01 09:24:51.101809', NULL, 1, NULL, NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (15, 'Bretrand-Rapello', 'Baptiste', 'baptiste@lacatholille.fr', 'elbaptiste', 25, '1998-03-14 16:24:08', '2021-03-31 13:34:16.939812', NULL, 1, '$pbkdf2-sha256$30000$qnUOYewdo7SW0jqH0Jpzrg$OzhXGnLpQIaET.yxKVKyckmejGnsdughaivVGxnL./w', NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (16, 'Test', 'Test', 'tttt', 'test26', 13, '2008-06-03 00:00:00', '2021-06-09 09:33:06.802144', NULL, 1, '$pbkdf2-sha256$30000$tLa2lpISQmiNUWotpRQCoA$7U8fiGv0Sax.yOs8u0xlqvHASdXrPumV2H98x2pHc9Q', NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (17, 'polo', 'Paul', 'polo@gmail.c', 'Paulo52', 0, '2021-06-09 00:00:00', '2021-06-09 09:37:54.984705', NULL, 1, '$pbkdf2-sha256$30000$j3EuJWTsHWPsvVeqdc4ZIw$ipc.ocQV1emQBt3cGyn0XAJNjxkzH1Hh1Ab2nDMDoDg', NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (18, 'predator', 'alien', 'alien.predator@gmail.com', 'Predator', 30, '1991-05-08 00:00:00', '2021-06-09 09:49:11.950895', NULL, 1, '$pbkdf2-sha256$30000$6V3rfe9d690bI2Ss1VrLeQ$feRBhvRkPUEXu4/3a.Gfy/VHSYYfAh0Ao0XrZnm2Rmw', NULL);
+INSERT INTO public.users (id, last_name, first_name, email, username, age, birth_date, dt_inscription, last_login, fk_group, password, height) VALUES (1, 'sens', 'nathan', '2019607838@lacatholille.fr', 'unknow', 22, '1998-03-14 16:24:08', '2021-03-31 11:32:47.817933', NULL, 3, '$pbkdf2-sha256$30000$nfM.R0jp3RtjLKUUopTSmg$rIYzBBxtR7PwR2MI2U4wiQIDVHDOYD0Bxf.XWCR4J0c', 1.85);
 
 
 --
@@ -176,7 +180,7 @@ SELECT pg_catalog.setval('public.users_fk_group_seq', 2, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 15, true);
+SELECT pg_catalog.setval('public.users_id_seq', 18, true);
 
 
 --
